@@ -300,16 +300,17 @@ ifconfig
 - Destruir infraestructura:
 
 ```
-terraformar destroy
+terraform destroy 
+``` 
+  
+![image](https://user-images.githubusercontent.com/10358317/229281383-6c8e01ea-af3a-4477-9be6-a10096318333.png)
+  
+![image](https://user-images.githubusercontent.com/10358317/229281239-b1713771-2960-4746-a1bd-f7543913bd66.png)
 
-``` ![imagen](https://user-images.githubusercontent.com/10358317/229281383-6c8e01ea-af3a-4477-9be6-a10096318333.png)
+- Asegúrese de que las instancias estén terminadas. Si funcionan, pagamos su costo:
 
-![imagen](https://user-images.githubusercontent.com/10358317/229281239-b1713771-2960-4746-a1bd-f7543913bd66.png)
+![image](https://user-images.githubusercontent.com/10358317/228982134-2a648783-0f11-47e9-865d-1dc92dffdd0f.png)
 
-- Asegúrese de que las instancias estén terminadas. Porque si funcionan, pagamos su tarifa:
-
-![imagen](https://user-images.githubusercontent.com/10358317/228982134-2a648783-0f11-47e9-865d-1dc92dffdd0f.png)
-
-- También podemos monitorizar el uso de CPU, disco y red en AWS EC2:
-
-![imagen](https://user-images.githubusercontent.com/10358317/228983384-7b4a0e36-0605-4f33-901f-2a0ebd79c4f6.png)
+- También podemos monitorear el uso de CPU, disco y red en AWS EC2:
+	
+![image](https://user-images.githubusercontent.com/10358317/228983384-7b4a0e36-0605-4f33-901f-2a0ebd79c4f6.png)
