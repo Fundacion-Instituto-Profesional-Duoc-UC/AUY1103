@@ -1,4 +1,4 @@
-# SIGLA ASIGNATURA - NOMBRE ASIGNATURA
+# AUY1103 - INFRAESTRUCTURA COMO CODIGO I
 
 <p align="left" style="text-align:left;">
   <a href="https://www.duoc.cl/">
