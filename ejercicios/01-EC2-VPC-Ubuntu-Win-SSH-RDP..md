@@ -1,48 +1,47 @@
-## SAMPLE-01: Provisioning EC2s (Windows 2019 Server, Ubuntu 20.04) on VPC (Subnet), Creating Key-Pair, Connecting Ubuntu using SSH, and Connecting Windows Using RDP
+## EJERCICIO-01: Aprovisionamiento de EC2 (Windows 2019 Server, Ubuntu 20.04) en una VPC (subred), creación de un par de claves, conexión a Ubuntu mediante SSH y conexión a Windows mediante RDP.
 
-This sample shows:
-- how to create Key-pairs (public and private keys) on AWS.
-- how to create EC2s (Ubuntu 20.04, Windows 2019 Server).
-- how to create Virtual Private Cloud (VPC), VPC Components (Public Subnet, Internet Gateway, Route Table) and link to each others.
-- how to create Security Groups (for SSH and Remote Desktop).
+Este ejemplo muestra:
+- Cómo crear pares de claves (claves públicas y privadas) en AWS.
+- Cómo crear EC2 (Ubuntu 20.04, Windows 2019 Server).
+- Cómo crear una nube virtual privada (VPC), componentes de VPC (subred pública, puerta de enlace de Internet, tabla de rutas) y cómo vincularlos entre sí.
+- Cómo crear grupos de seguridad (para SSH y Escritorio remoto).
 
-**Code:** https://github.com/omerbsezer/Fast-Terraform/tree/main/samples/ec2-vpc-ubuntu-win-ssh-rdp
+**Código:** https://github.com/omerbsezer/Fast-Terraform/tree/main/samples/ec2-vpc-ubuntu-win-ssh-rdp
 
-  ![1 VPC-IG-EC2](https://github.com/user-attachments/assets/29c5a207-bc35-43f1-8c4e-75d77acf77c1)
+![1 VPC-IG-EC2](https://github.com/user-attachments/assets/29c5a207-bc35-43f1-8c4e-75d77acf77c1)
 
-### Prerequisite
+### Prerrequisito
 
-- You should have a look following lab: 
-  - [LAB-00: Terraform Install, AWS Configuration with Terraform](https://github.com/omerbsezer/Fast-Terraform/blob/main/LAB00-Terraform-Install-AWS-Configuration.md)
+- Deberías tener previamente instalado el Terraform y configurado el acceso a la cuenta de AWS.
 
-## Steps
+## Pasos
 
-- SSH key-pairs (public and private key) are used to connect remote server. Public key (xx.pub) is on the remote server, with private key, user can connect using SSH.
+- Se utilizan pares de claves SSH (clave pública y privada) para conectar con el servidor remoto. La clave pública (xx.pub) se encuentra en el servidor remoto. Con la clave privada, el usuario puede conectarse mediante SSH.
 
-- There are 2 ways of creating key-pairs (public and private key):
-  - Creating them on cloud (AWS)
-  	- EC2 > Key-pairs > Create Key-Pair
-  - Creating them on on-premise 
-  	- "ssh-keygen -t rsa -b 2048" 
+- Hay dos maneras de crear pares de claves (pública y privada):
+- Crearlos en la nube (AWS)
+- EC2 > Pares de claves > Crear par de claves
+- Crearlos localmente
+- "ssh-keygen -t rsa -b 2048"
 
-- Creating key-pairs on AWS: Go to EC2 > Key-pairs
+- Creación de pares de claves en AWS: Vaya a EC2 > Pares de claves
 
-![image](https://user-images.githubusercontent.com/10358317/228974087-b57126ab-6589-48fe-b609-1f18dc2f0c7e.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228974087-b57126ab-6589-48fe-b609-1f18dc2f0c7e.png)
 
-- After creating key-pairs, public key is listed on AWS:
+- Tras crear los pares de claves, la clave pública aparece en AWS:
 
-![image](https://user-images.githubusercontent.com/10358317/228974292-0d2d16ec-5590-4929-9b4e-8bc0215dcd60.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228974292-0d2d16ec-5590-4929-9b4e-8bc0215dcd60.png)
 
-- Private key (testkey.pem) is downloaded on your PC:
+- La clave privada (testkey.pem) se descarga en su dispositivo PC:
 
-![image](https://user-images.githubusercontent.com/10358317/228974369-46c54f25-ea80-40dd-9c75-670ece815bf2.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228974369-46c54f25-ea80-40dd-9c75-670ece815bf2.png)
 
-- Copy this testkey.pem into your directory on which main.tf exists.
+- Copia este testkey.pem en el directorio donde se encuentra el archivo main.tf.
 
-![image](https://user-images.githubusercontent.com/10358317/228974784-de1b9be4-9083-45ec-a9ab-5a1e54aee2c5.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228974784-de1b9be4-9083-45ec-a9ab-5a1e54aee2c5.png)
 
 
-- Create main.tf under count directory and copy the code:
+- Cree main.tf en el directorio count y copie el código:
  
 ``` 
 # main.tf
@@ -183,138 +182,134 @@ output "instance_win2019_public_ip" {
 }
 ``` 
 
-**Code:** https://github.com/omerbsezer/Fast-Terraform/blob/main/samples/ec2-vpc-ubuntu-win-ssh-rdp/main.tf
+**Código:** https://github.com/omerbsezer/Fast-Terraform/blob/main/samples/ec2-vpc-ubuntu-win-ssh-rdp/main.tf
 
-![image](https://user-images.githubusercontent.com/10358317/228973324-4bc1c6ad-1099-4f56-8e6f-c002f719d9d4.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228973324-4bc1c6ad-1099-4f56-8e6f-c002f719d9d4.png)
 
-- Run init command:
+- Ejecutar el comando init:
 
-``` 
+```
 terraform init
-``` 
+```
 
-![image](https://user-images.githubusercontent.com/10358317/228975022-6ed0663d-dca8-427b-8a9b-7cce25522117.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228975022-6ed0663d-dca8-427b-8a9b-7cce25522117.png)
 
-- Validate file:
+- Validar Archivo:
 
-``` 
+```
 terraform validate
-``` 
+```
 
-![image](https://user-images.githubusercontent.com/10358317/228975088-077a0562-ee85-4ad2-8cc9-2f4ccd1c4c94.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228975088-077a0562-ee85-4ad2-8cc9-2f4ccd1c4c94.png)
 
+- Ejecutar el comando "plan":
 
-- Run plan command:
-
-``` 
+```
 terraform plan
-``` 
+```
 
-- Run apply command to create resources. Then, Terraform asks to confirm, write "yes":
+- Ejecutar el comando "apply" para crear recursos. Terraform solicita confirmación; escribe "sí":
 
-``` 
+```
 terraform apply
 ```
+![imagen](https://user-images.githubusercontent.com/10358317/228975493-a28ece3e-b00d-436e-aab1-de7b679378f3.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228975493-a28ece3e-b00d-436e-aab1-de7b679378f3.png)
+![imagen](https://user-images.githubusercontent.com/10358317/229282068-a4f293cf-cde7-4b6b-9e9e-48bd40822aae.png)
 
-![image](https://user-images.githubusercontent.com/10358317/229282068-a4f293cf-cde7-4b6b-9e9e-48bd40822aae.png)
+- En AWS EC2 > Instancias, Ubuntu 20.04:
 
-- On AWS EC2 > Instances, Ubuntu 20.04:
+![imagen](https://user-images.githubusercontent.com/10358317/228975962-72c0fbe9-e1dc-482c-8edc-573013424953.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228975962-72c0fbe9-e1dc-482c-8edc-573013424953.png)
+- Grupos de seguridad (SSG), para SSH (puerto 22), RDP (puerto 3389), HTTP (80), ICMP (para ping):
 
-- Security groups (SSG), for SSH (port 22), RDP (port 3389), HTTP (80), ICMP (for ping):
+![imagen](https://user-images.githubusercontent.com/10358317/228976204-c4993141-c8ad-4110-8f05-c1fb1e2c13c2.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228976204-c4993141-c8ad-4110-8f05-c1fb1e2c13c2.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228976348-f07e284e-be34-4898-9b81-92a756910a56.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228976348-f07e284e-be34-4898-9b81-92a756910a56.png)
+- En AWS EC2 > Instancias, Ventana 2019 Servidor:
 
-- On AWS EC2 > Instances, Window 2019 Server:
+![imagen](https://user-images.githubusercontent.com/10358317/228976557-7951b759-73fd-46a6-b325-08389e52b86f.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228976557-7951b759-73fd-46a6-b325-08389e52b86f.png)
+- Windows tiene el mismo SSG que Ubuntu.
 
-- Windows has same SSG like Ubuntu.
+Almacenamiento, almacenamiento en bloque elástico predeterminado:
 
-- Storage, Elastic Block Storage default:
+![imagen](https://user-images.githubusercontent.com/10358317/228976823-4e80c3e5-8ec6-4e4b-b5d2-aa064982954d.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228976823-4e80c3e5-8ec6-4e4b-b5d2-aa064982954d.png)
+En el servicio AWS VPC (nube virtual privada):
 
-- On AWS VPC (Virtual Private Cloud) Service:
+![imagen](https://user-images.githubusercontent.com/10358317/228977082-f0634c8e-8701-45e2-aa22-f0b7dc1e3400.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228977082-f0634c8e-8701-45e2-aa22-f0b7dc1e3400.png)
+Al instalar Ubuntu 20.04, se utilizan los datos de usuario para instalar el servidor Apache. Con el puerto SSG 80 y usando una IP pública, podemos ver el archivo index.html, como el servidor de alojamiento:
 
-- While installing Ubuntu20.04, userdata is used to install Apache Server on it. With SSG Port 80, using public IP, we can see the index.html, like hosting server:
+![imagen](https://user-images.githubusercontent.com/10358317/228978767-aee0b725-eff2-40b2-8a30-93f40c15a052.png)
 
-![image](https://user-images.githubusercontent.com/10358317/228978767-aee0b725-eff2-40b2-8a30-93f40c15a052.png)
+- SSH a Ubuntu 20.04 (ssh -i testkey.pem ubuntu@<PublicIPAddress>):
 
+![imagen](https://user-images.githubusercontent.com/10358317/228977324-3393ae14-85d8-48ba-9133-bc7a6f1ef73b.png)
 
-- SSH to Ubuntu 20.04 (ssh -i testkey.pem ubuntu@<PublicIPAddress>):
-
-![image](https://user-images.githubusercontent.com/10358317/228977324-3393ae14-85d8-48ba-9133-bc7a6f1ef73b.png)
-
-- Run:
-  
-```   
-sudo apt install net-tools
-ifconfig 
-``` 
-
-- Private IP can be seen:
-  
-![image](https://user-images.githubusercontent.com/10358317/228977710-610437ee-c1c2-4a7e-82e7-ac07d38aed62.png)
-
-- Make remote connection to Windows (RDP):
-  
-![image](https://user-images.githubusercontent.com/10358317/228977887-14d82ad9-41ff-43eb-bdaf-2c3e007df506.png)
-
-- Download RDP App:
-  
-![image](https://user-images.githubusercontent.com/10358317/228978036-79956ff6-755e-4205-aa17-4ac45f8e6642.png)
-  
-- To get password, upload testkey.pem file:
-  
-![image](https://user-images.githubusercontent.com/10358317/228978295-f822464a-a448-434f-a22e-5f623620d69e.png)
-
-![image](https://user-images.githubusercontent.com/10358317/228978459-8fabb789-eec4-4582-b0e2-4b44d0e2de43.png)
-  
-- Now, we reach Windows using RDP:
-  
-![image](https://user-images.githubusercontent.com/10358317/229282800-7ee0cd35-fd46-4ece-9b04-45fa5c785fef.png)
-  
-- Pinging to Ubuntu20.04 from Windows:
-  
-![image](https://user-images.githubusercontent.com/10358317/228979379-1ed193a4-c5e4-4526-8a8e-0ecb2cf1a534.png)
-  
-- Opening firewall rules to ping from Ubuntu to Windows:
-- Windows Defender -> Advance Settings -> Inbound Rules -> File and Printer Sharing (Echo Request - ICMPv4 - In) -> Right Click (Enable)
-  
-![image](https://user-images.githubusercontent.com/10358317/228980207-1f699349-9d09-4304-ad1f-d66187a0b9e1.png)
-  
-- Pinging to Windows 2019 Server from Ubuntu20.04:
-  
-![image](https://user-images.githubusercontent.com/10358317/228980821-98c1b545-c1c1-41ca-a53c-f5049641c9df.png)
-  
-- Viewing Ubuntu CPU, RAM:
-  
-![image](https://user-images.githubusercontent.com/10358317/228981485-341444fb-f806-49fe-9a6c-c7edc0d25f17.png)
-  
-![image](https://user-images.githubusercontent.com/10358317/228981584-9823ad8d-169f-4ef2-b4bc-61852b95393b.png)
-  
-- Destroy infrastructure:
+- Ejecutar:
 
 ```
-terraform destroy 
-``` 
-  
-![image](https://user-images.githubusercontent.com/10358317/229281383-6c8e01ea-af3a-4477-9be6-a10096318333.png)
-  
-![image](https://user-images.githubusercontent.com/10358317/229281239-b1713771-2960-4746-a1bd-f7543913bd66.png)
+sudo apt install net-tools
+ifconfig
+```
 
-- Be sure that instances are terminated. Because if they works, we pay the fee of them:
+- Se puede ver la IP privada:
 
-![image](https://user-images.githubusercontent.com/10358317/228982134-2a648783-0f11-47e9-865d-1dc92dffdd0f.png)
+![imagen](https://user-images.githubusercontent.com/10358317/228977710-610437ee-c1c2-4a7e-82e7-ac07d38aed62.png)
 
-- We can also monitor the CPU, Disk, Network Usage on AWS EC2:
-	
-![image](https://user-images.githubusercontent.com/10358317/228983384-7b4a0e36-0605-4f33-901f-2a0ebd79c4f6.png)
+- Establecer conexión remota a Windows (RDP):
+
+![imagen](https://user-images.githubusercontent.com/10358317/228977887-14d82ad9-41ff-43eb-bdaf-2c3e007df506.png)
+
+- Descargar RDP Aplicación:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228978036-79956ff6-755e-4205-aa17-4ac45f8e6642.png)
+
+- Para obtener la contraseña, sube el archivo testkey.pem Archivo:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228978295-f822464a-a448-434f-a22e-5f623620d69e.png)
+
+![imagen](https://user-images.githubusercontent.com/10358317/228978459-8fabb789-eec4-4582-b0e2-4b44d0e2de43.png)
+
+- Ahora, accedemos a Windows usando RDP:
+
+![imagen](https://user-images.githubusercontent.com/10358317/229282800-7ee0cd35-fd46-4ece-9b04-45fa5c785fef.png)
+
+- Haciendo ping a Ubuntu 20.04 desde Windows:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228979379-1ed193a4-c5e4-4526-8a8e-0ecb2cf1a534.png)
+
+- Abriendo las reglas del firewall para hacer ping de Ubuntu a Windows:
+- Windows Defender -> Configuración avanzada -> Reglas de entrada -> Compartir archivos e impresoras (Solicitud de eco - ICMPv4 - Entrada) -> Clic derecho (Habilitar)
+
+![imagen](https://user-images.githubusercontent.com/10358317/228980207-1f699349-9d09-4304-ad1f-d66187a0b9e1.png)
+
+- Haciendo ping a Windows 2019 Server desde Ubuntu 20.04:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228980821-98c1b545-c1c1-41ca-a53c-f5049641c9df.png)
+
+- Visualización de la CPU de Ubuntu RAM:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228981485-341444fb-f806-49fe-9a6c-c7edc0d25f17.png)
+
+![imagen](https://user-images.githubusercontent.com/10358317/228981584-9823ad8d-169f-4ef2-b4bc-61852b95393b.png)
+
+- Destruir infraestructura:
+
+```
+terraformar destroy
+
+``` ![imagen](https://user-images.githubusercontent.com/10358317/229281383-6c8e01ea-af3a-4477-9be6-a10096318333.png)
+
+![imagen](https://user-images.githubusercontent.com/10358317/229281239-b1713771-2960-4746-a1bd-f7543913bd66.png)
+
+- Asegúrese de que las instancias estén terminadas. Porque si funcionan, pagamos su tarifa:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228982134-2a648783-0f11-47e9-865d-1dc92dffdd0f.png)
+
+- También podemos monitorizar el uso de CPU, disco y red en AWS EC2:
+
+![imagen](https://user-images.githubusercontent.com/10358317/228983384-7b4a0e36-0605-4f33-901f-2a0ebd79c4f6.png)
