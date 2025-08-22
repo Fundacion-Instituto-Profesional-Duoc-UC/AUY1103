@@ -295,7 +295,6 @@ terraform destroy
   
 ![image](https://github.com/raggon-cl/AUY1103/blob/e30eee2d0b5f6981c5f6574a47efe9e6b32f13bc/img/ejercicio1/229281383-6c8e01ea-af3a-4477-9be6-a10096318333.png)
   
-![image](https://github.com/raggon-cl/AUY1103/blob/e30eee2d0b5f6981c5f6574a47efe9e6b32f13bc/img/ejercicio1/229281239-b1713771-2960-4746-a1bd-f7543913bd66.png)
 
 - Asegúrese de que las instancias estén terminadas. Si funcionan, pagamos su costo:
 
