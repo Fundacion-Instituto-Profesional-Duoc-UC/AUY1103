@@ -287,12 +287,6 @@ ifconfig
 
 ![imagen](https://github.com/raggon-cl/AUY1103/blob/e30eee2d0b5f6981c5f6574a47efe9e6b32f13bc/img/ejercicio1/228980821-98c1b545-c1c1-41ca-a53c-f5049641c9df.png)
 
-- Visualización de la CPU de Ubuntu RAM:
-
-![imagen](https://github.com/raggon-cl/AUY1103/blob/e30eee2d0b5f6981c5f6574a47efe9e6b32f13bc/img/ejercicio1/228981485-341444fb-f806-49fe-9a6c-c7edc0d25f17.png)
-
-![imagen](https://github.com/raggon-cl/AUY1103/blob/e30eee2d0b5f6981c5f6574a47efe9e6b32f13bc/img/ejercicio1/228981584-9823ad8d-169f-4ef2-b4bc-61852b95393b.png)
-
 - Destruir infraestructura:
 
 ```
