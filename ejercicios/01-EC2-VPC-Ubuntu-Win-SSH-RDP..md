@@ -6,8 +6,6 @@ Este ejemplo muestra:
 - Cómo crear una nube virtual privada (VPC), componentes de VPC (subred pública, puerta de enlace de Internet, tabla de rutas) y cómo vincularlos entre sí.
 - Cómo crear grupos de seguridad (para SSH y Escritorio remoto).
 
-**Código:** https://github.com/omerbsezer/Fast-Terraform/tree/main/samples/ec2-vpc-ubuntu-win-ssh-rdp
-
 ![1 VPC-IG-EC2](https://github.com/user-attachments/assets/29c5a207-bc35-43f1-8c4e-75d77acf77c1)
 
 ### Prerrequisito
@@ -181,8 +179,6 @@ output "instance_win2019_public_ip" {
   value = "${aws_instance.win2019.public_ip}"
 }
 ``` 
-
-**Código:** https://github.com/omerbsezer/Fast-Terraform/blob/main/samples/ec2-vpc-ubuntu-win-ssh-rdp/main.tf
 
 ![imagen](https://user-images.githubusercontent.com/10358317/228973324-4bc1c6ad-1099-4f56-8e6f-c002f719d9d4.png)
 
