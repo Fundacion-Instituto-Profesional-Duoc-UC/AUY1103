@@ -34,7 +34,7 @@ Esta actividad consiste en:
    ```bash
    terraform plan
    terraform apply
-   terraform apply
+   terraform destroy
 ## CONTRIBUCIONES
 
 Contribuciones son bienvenidas! Revisa nuestra [Guía de Contribuciones](./docs/CONTRIBUTING.md)
